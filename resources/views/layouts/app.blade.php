@@ -38,7 +38,7 @@
 
 <script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
 
-@section('scripts')
+@section('Scripts')
 @show
 
 </body>
