@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INSPINIA - @yield('title') </title>
+    <title>{{ env('APP_NAME') }} - @yield('title') </title>
 
 
     <link rel="stylesheet" href="{!! asset('css/vendor.css') !!}" />
@@ -38,8 +38,6 @@
 
 <script src="{!! asset('js/app.js') !!}" type="text/javascript"></script>
 
-@section('Scripts')
-@show
-
+@yield('scripts')
 </body>
 </html>

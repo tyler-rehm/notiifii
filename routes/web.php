@@ -12,7 +12,6 @@
 */
 
 Route::get('/', 'HomeController@index')->name("main");
-Route::get('/minor', 'HomeController@minor')->name("minor");
 
 Auth::routes();
 
@@ -22,7 +21,7 @@ Route::get('/messages/process', 'MessagesController@process');
 Route::post('/voice/outbound/{file_name}', 'MessagesController@voiceOutbound');
 Route::match(['get', 'post'], '/sms/update', 'MessagesController@smsUpdate');
 Route::match(['get', 'post'], '/voice/update', 'MessagesController@voiceUpdate');
-Route::get('/voice/gather', 'MessageController@voiceGather');
+Route::get('/voice/gather', 'MessagesController@voiceGather');
 
 Route::get('/test', function(){
     dd(json_encode(['action' => url('/voice/gather'), 'method' => 'GET', 'numDigits' => 1]));
