@@ -11,18 +11,19 @@
 |
 */
 
+Auth::routes();
 Route::get('/', 'HomeController@index')->name("main");
 
-Auth::routes();
+Route::resource('contact', 'ContactController');
+Route::resource('voices', 'VoiceController');
+Route::resource('emails', 'EmailController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('message', 'MessageController');
+Route::get('/message/process', 'MessageController@process');
 
-Route::get('/messages/process', 'MessagesController@process');
-Route::post('/voice/outbound/{file_name}', 'MessagesController@voiceOutbound');
-Route::match(['get', 'post'], '/sms/update', 'MessagesController@smsUpdate');
-Route::match(['get', 'post'], '/voice/update', 'MessagesController@voiceUpdate');
-Route::get('/voice/gather', 'MessagesController@voiceGather');
+Route::resource('sms', 'SmsController');
+Route::match(['get', 'post'], '/sms/update', 'MessageController@smsUpdate');
 
-Route::get('/test', function(){
-    dd(json_encode(['action' => url('/voice/gather'), 'method' => 'GET', 'numDigits' => 1]));
-});
+Route::match(['get', 'post'], '/voice/update', 'MessageController@voiceUpdate');
+Route::post('/voice/outbound/{file_name}', 'MessageController@voiceOutbound');
+Route::get('/voice/gather', 'MessageController@voiceGather');

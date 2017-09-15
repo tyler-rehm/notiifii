@@ -19,10 +19,16 @@
                 </div>
             </li>
             <li class="{{ isActiveRoute('main') }}">
-                <a href="{{ url('/') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Main view</span></a>
+                <a href="{{ url('/') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span></a>
             </li>
-            <li class="{{ isActiveRoute('minor') }}">
-                <a href="{{ url('/minor') }}"><i class="fa fa-th-large"></i> <span class="nav-label">Minor view</span> </a>
+            <li class="{{ isActiveRoute('messages') }}">
+                <a href="{{ url('/messages') }}"><i class="fa fa-envelope"></i> <span class="nav-label">Messages</span></a>
+            </li>
+            <li class="{{ isActiveRoute('contacts') }}">
+                <a href="{{ url('/contacts') }}"><i class="fa fa-address-book-o"></i> <span class="nav-label">Contacts</span></a>
+            </li>
+            <li class="{{ isActiveRoute('settings') }}">
+                <a href="{{ url('/settings') }}"><i class="fa fa-cogs"></i> <span class="nav-label">Settings</span></a>
             </li>
         </ul>
 

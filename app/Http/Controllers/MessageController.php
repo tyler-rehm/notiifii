@@ -13,7 +13,7 @@ use App\Type;
 use App\Message;
 
 
-class MessagesController extends Controller
+class MessageController extends Controller
 {
     use SmsTrait;
     use VoiceTrait;
@@ -29,6 +29,86 @@ class MessagesController extends Controller
     public function __construct()
     {
 
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $messages = Message::where('company_id', '=', 1)->get();
+        return view('messages.index')->with(['messages' => $messages]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+      //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+      //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Setting  $setting
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $message = Message::where('id', '=', $id)->first();
+        return view('messages.show')->with(['message' => $message]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Setting  $setting
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $message = Message::where('id', '=', $id)->first();
+        return view('messages.edit')->with(['message' => $message]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Setting  $setting
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+      //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Setting  $setting
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        Message::where('id', '=', $id)->delete();
+        redirect('/messages');
     }
 
     public function process(Request $request)

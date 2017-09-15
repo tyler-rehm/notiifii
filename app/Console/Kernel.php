@@ -17,7 +17,8 @@ class Kernel extends ConsoleKernel
         Commands\SendSms::class,
         Commands\SendEmail::class,
         Commands\UpdateEmails::class,
-        Commands\SendVoice::class
+        Commands\SendVoice::class,
+        Commands\AppReset::class
     ];
 
     /**
